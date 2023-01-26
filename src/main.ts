@@ -6,5 +6,8 @@ import App from "./App.vue";
 
 const app = createApp(App);
 
+declare const serverUrl: string;
+app.provide("serverUrl", serverUrl)
+
 app.use(ElementPlus);
-app.mount("#app");
+const vm = app.mount("#app");

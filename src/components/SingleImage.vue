@@ -46,7 +46,7 @@ const showImage = computed(() => !(props.loadingStatus === LoadingStatus.idle));
 <style>
 .image-row {
   min-height: 100px;
-  max-height: 512px;
+  /* max-height: 512px; */
   width: 512px;
 }
 .image-row .image-slot {

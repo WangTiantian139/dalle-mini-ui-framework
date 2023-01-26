@@ -27,10 +27,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, computed } from "vue";
+import { ref, reactive, computed, inject } from "vue";
 import SingleImage from "./SingleImage.vue";
 import { ArrowRight } from "@element-plus/icons-vue";
-import { serverUrl } from "@/../public/public_config.json";
 import LoadingStatus from "./LoadingStatus";
 
 const promptText = ref("");
@@ -45,7 +44,9 @@ const showAlert = computed(() => {
 });
 const curImageIndex = ref(-1);
 const imageCount = ref(0);
-const imageUrl = computed(() => serverUrl + "/view-image/" + curImageIndex.value);
+const serverUrl = inject<string>("serverUrl", "127.0.0.1");
+// const imageUrl = computed(() => serverUrl + "/view-image/" + curImageIndex.value);
+const imageUrl = ref("");
 const loadingStatus = ref(LoadingStatus.idle);
 
 function generateImage(): void {
@@ -53,22 +54,15 @@ function generateImage(): void {
   if (!showAlert.value) {
     // do something
     loadingStatus.value = LoadingStatus.loading;
-    const url = serverUrl + "/generate-image";
+    const url = serverUrl + "/generate-image/" + promptText.value;
     const httpRequest = new XMLHttpRequest();
-    let formData = new FormData();
-    formData.append("prompt", promptText.value);
     httpRequest.open("POST", url, true);
-    // httpRequest.setRequestHeader("Content-Type", "multipart/form-data");
-    // httpRequest.send(formData); // donnot set headers manually when using FormData
+    httpRequest.send();
     httpRequest.onreadystatechange = function () {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
           // console.log("DONE! -> ", httpRequest.responseText);
-          let res: { imageCount: number; curImageIndex: number } = JSON.parse(
-            httpRequest.responseText
-          );
-          imageCount.value = res.imageCount;
-          curImageIndex.value = res.curImageIndex;
+          imageUrl.value = httpRequest.responseText;
           loadingStatus.value = LoadingStatus.done;
         } else {
           loadingStatus.value = LoadingStatus.error;
