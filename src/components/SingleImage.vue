@@ -24,9 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
 import LoadingStatus from "./LoadingStatus";
-import { Loading, Warning } from "@element-plus/icons-vue";
+import { Warning } from "@element-plus/icons-vue";
 
 interface Props {
   loadingStatus: LoadingStatus;
@@ -34,13 +33,6 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-
-// const testUrl = ref(
-//   // "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg"
-//   ""
-// );
-
-const showImage = computed(() => !(props.loadingStatus === LoadingStatus.idle));
 </script>
 
 <style>
