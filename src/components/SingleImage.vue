@@ -2,18 +2,18 @@
   <el-row justify="center">
     <el-image
       :src="imageUrl"
-      v-if="props.loadingStatus !== LoadingStatus.idle"
-      v-loading="props.loadingStatus === LoadingStatus.loading"
+      v-if="loadingStatus !== LoadingStatus.idle"
+      v-loading="loadingStatus === LoadingStatus.loading"
       fit="contain"
       class="image-row"
     >
       <template #error>
         <div
-          v-if="props.loadingStatus === LoadingStatus.loading"
+          v-if="loadingStatus === LoadingStatus.loading"
           class="image-slot"
         />
         <div
-          v-else-if="props.loadingStatus === LoadingStatus.error"
+          v-else-if="loadingStatus === LoadingStatus.error"
           class="image-slot"
         >
           <el-icon><warning /></el-icon>
@@ -24,9 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
 import LoadingStatus from "./LoadingStatus";
-import { Loading, Warning } from "@element-plus/icons-vue";
+import { Warning } from "@element-plus/icons-vue";
 
 interface Props {
   loadingStatus: LoadingStatus;
@@ -34,13 +33,6 @@ interface Props {
 }
 
 const props = defineProps<Props>();
-
-// const testUrl = ref(
-//   // "https://fuss10.elemecdn.com/a/3f/3302e58f9a181d2509f3dc0fa68b0jpeg.jpeg"
-//   ""
-// );
-
-const showImage = computed(() => !(props.loadingStatus === LoadingStatus.idle));
 </script>
 
 <style>
