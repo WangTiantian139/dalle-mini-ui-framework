@@ -42,17 +42,13 @@ const showAlert = computed(() => {
   // false            true                false
   return promptText.value === "" && !haveNotGenerated.value;
 });
-const curImageIndex = ref(-1);
-const imageCount = ref(0);
 const serverUrl = inject<string>("serverUrl", "127.0.0.1");
-// const imageUrl = computed(() => serverUrl + "/view-image/" + curImageIndex.value);
 const imageUrl = ref("");
 const loadingStatus = ref(LoadingStatus.idle);
 
 function generateImage(): void {
   haveNotGenerated.value = false;
   if (!showAlert.value) {
-    // do something
     loadingStatus.value = LoadingStatus.loading;
     const url = serverUrl + "/generate-image/" + promptText.value;
     const httpRequest = new XMLHttpRequest();
@@ -61,7 +57,6 @@ function generateImage(): void {
     httpRequest.onreadystatechange = function () {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
-          // console.log("DONE! -> ", httpRequest.responseText);
           imageUrl.value = httpRequest.responseText;
           loadingStatus.value = LoadingStatus.done;
         } else {
