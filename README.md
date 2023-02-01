@@ -1,25 +1,14 @@
 # ui-framework
 
-This template should help get you started developing with Vue 3 in Vite.
+It is a demo framework to show how to use `Vue` to establish a website. The demonstration is to generate an image using `Dalle-mini` by a piece of text prompt. 
 
-## Recommended IDE Setup
+The website looks like:
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+![demo](./doc/demo.png)
 
-## Type Support for `.vue` Imports in TS
+Please note that the repo is not a complete project, actually, it is only a front end, so you cannot run the website seperately to get the desired image. 
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
-
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
-
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+# how to run
 
 ## Project Setup
 
@@ -37,4 +26,17 @@ npm run dev
 
 ```sh
 npm run build
+```
+
+# Citations
+
+```bibtex
+@misc{Dayma_DALL·E_Mini_2021,
+      author = {Dayma, Boris and Patil, Suraj and Cuenca, Pedro and Saifullah, Khalid and Abraham, Tanishq and Lê Khắc, Phúc and Melas, Luke and Ghosh, Ritobrata},
+      doi = {10.5281/zenodo.5146400},
+      month = {7},
+      title = {DALL·E Mini},
+      url = {https://github.com/borisdayma/dalle-mini},
+      year = {2021}
+}
 ```
