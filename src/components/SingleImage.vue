@@ -2,18 +2,18 @@
   <el-row justify="center">
     <el-image
       :src="imageUrl"
-      v-if="props.loadingStatus !== LoadingStatus.idle"
-      v-loading="props.loadingStatus === LoadingStatus.loading"
+      v-if="loadingStatus !== LoadingStatus.idle"
+      v-loading="loadingStatus === LoadingStatus.loading"
       fit="contain"
       class="image-row"
     >
       <template #error>
         <div
-          v-if="props.loadingStatus === LoadingStatus.loading"
+          v-if="loadingStatus === LoadingStatus.loading"
           class="image-slot"
         />
         <div
-          v-else-if="props.loadingStatus === LoadingStatus.error"
+          v-else-if="loadingStatus === LoadingStatus.error"
           class="image-slot"
         >
           <el-icon><warning /></el-icon>
